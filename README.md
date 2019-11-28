@@ -19,21 +19,21 @@ npm install
 npm run serve
 
 
-# Feature 1 - Register as a voter
+### Feature 1 - Register as a voter
 
 To register for a voter, enter all the required information including game user name, nation, first name, last name, email address and hit Register button.
 
-# Feature 2 - User role control
+### Feature 2 - User role control
 Use your registered game user name for login
 
-# Feature 3 - Vote for a candidate
+### Feature 3 - Vote for a candidate
 Pick your favorite player and enter the correct voterID to cast the vote
 
-# Feature 4 - No double voting allowed
-After casting his or her vote, the voter cannot log in with the username anymore.
+### Feature 4 - Avoid double voting 
+After casting his or her vote, the voter is not allowed to log in with the username anymore.
 
-# Feature 5 - Verify the vote
+### Feature 5 - Verify the vote
 The user can check the public ID and voting result by entering the game user name.
 
-# Feature 6 - Tally the vote
+### Feature 6 - Tally the vote
 In the home page, hit the get poll standings and a bar plot of the current voting result will be shown.
