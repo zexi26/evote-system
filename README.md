@@ -8,16 +8,17 @@
 To run the project, under the root directory,
 
 First to start the server, use command:
+```
 cd web-app/server/
 npm install
 npm start
-
+```
 Then, in another terminal start the client using command :
-
+```
 cd web-app/client/
 npm install
 npm run serve
-
+```
 
 ### Feature 1 - Register as a voter
 
