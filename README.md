@@ -9,15 +9,18 @@ To run the project, under the root directory,
 
 First to start the server, use command:
 ```
-cd web-app/server/
-npm install
-npm start
+make run-server
 ```
-Then, in another terminal start the client using command :
+Then, in start the client using command :
 ```
 cd web-app/client/
 npm install
 npm run serve
+```
+
+To view the status of the docker containers, execute
+```
+make status
 ```
 
 ### Feature 1 - Register as a voter
