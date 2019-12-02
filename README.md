@@ -37,4 +37,4 @@ After casting his or her vote, the voter is not allowed to log in with the usern
 The user can check the public ID and voting result by entering the game user name.
 
 ### Feature 6 - Tally the vote
-In the home page, hit the get poll standings and a bar plot of the current voting result will be shown.
+In the home page, hit the get poll standings and a pie chart of the current voting result will be shown.
