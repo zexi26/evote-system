@@ -7,18 +7,15 @@
 
 To run the project, under the root directory,
 
-First to start the server, use command:
+Use command :
 ```
-make run-server
-```
-Then, in start the client using command :
-```
-cd web-app/client/
-npm install
-npm run serve
+make run
 ```
 
-To view the status of the docker containers, execute
+This will execute both run-server and run-client commands.
+To view the process in action, simply navigate to localhost:8082.
+
+To view the status of the containers, execute
 ```
 make status
 ```
