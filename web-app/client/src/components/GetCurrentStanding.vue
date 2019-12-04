@@ -3,7 +3,6 @@
   <img class="card-img-top" src="../assets/logo.jpg" alt="Card image cap">
   <div class="card-body">
 
-    <input type="text" v-model="backendAddress" />
     <b-button type=button class="btn btn-primary btn-lg btn-block" @click.prevent="getCurrentStanding()" >Check Poll</b-button>
     <br>
     <span v-if="response">
@@ -26,7 +25,6 @@ export default {
   data() {
     return {
       response: null,
-      backendAddress: "http://localhost:8081",
       chartOptions: {}
     };
   },
@@ -40,7 +38,8 @@ export default {
       this.runSpinner();
 
       // console.log(`this.selected ${this.selected}`);
-      const apiResponse = await PostsService.getCurrentStanding(this.backendAddress);
+      let backendAddress = document.getElementById("backendAddressInput").value;
+      const apiResponse = await PostsService.getCurrentStanding(backendAddress);
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%");
       console.log(apiResponse);
       console.log(apiResponse.data[0].Record);
