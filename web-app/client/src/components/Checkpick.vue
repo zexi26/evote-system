@@ -14,9 +14,6 @@
       <br>
     </form> -->
 
-
- <div class="card" style="width: 40rem;">
-   <img class="card-img-top" src="../assets/logo.jpg" alt="Card image cap">
     <div class="card-body">
         <form v-on:submit="Checkpick">
         <div class="form-group">
@@ -63,13 +60,11 @@
         <b class="text-info">{{ input.data.picked }}</b>
       </template>
     </b-table> -->
-  
+    <br>
+    <vue-instant-loading-spinner id='loader' ref="Spinner"></vue-instant-loading-spinner>
     </div>
  
 
-    <br>
-    <vue-instant-loading-spinner id='loader' ref="Spinner"></vue-instant-loading-spinner>
-  </div>
 </template>
 
 <script>

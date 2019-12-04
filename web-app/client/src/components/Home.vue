@@ -1,8 +1,6 @@
 <template>
-<div class="card" style="width: 40rem;">
-  <img class="card-img-top" src="../assets/logo.jpg" alt="Card image cap">
+  <div>
   <div class="card-body">
-    
     <form v-on:submit="validateVoter">
       <label for="inputNation">Enter game username to vote</label>
       <b-form-input type="text" class="form-control" v-model="loginData.voterId" placeholder="Game username"></b-form-input>
@@ -45,15 +43,14 @@
         </div>
         <button type="submit" class="btn btn-primary">Register</button>     
     </form>
-    </div>
     <br>
     <span v-if="registerReponse">
       <b>{{ registerReponse.data }}</b>
     </span>
     <br>
     <vue-instant-loading-spinner id='loader' ref="Spinner"></vue-instant-loading-spinner>
+    </div>
   </div>
-
 
 </template>
 

@@ -8,7 +8,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <router-view/>
+        <parent-component/>
       </b-col>
     </b-row>
   </b-container>
@@ -18,11 +18,13 @@
 
 <script>
 import Navbar from '@/components/Navbar';
+import ParentComponent from '@/components/ParentComponent';
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    ParentComponent
   }
 }
 

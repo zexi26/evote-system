@@ -1,5 +1,4 @@
 <template>
-  <div class="card" style="width: 40rem;">
     <div class="card-body">
     
       <b-form-group label="Cast your vote for your favorite player!">
@@ -34,7 +33,6 @@
     <b-table striped hover :items="items" :fields="fields"></b-table>
     </div>
     <vue-instant-loading-spinner id="loader" ref="Spinner"></vue-instant-loading-spinner>
-  </div>
   </div>
 </template>
 

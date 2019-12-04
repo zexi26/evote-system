@@ -1,8 +1,5 @@
 <template>
-  <div class="card" style="width: 40rem;">
-  <img class="card-img-top" src="../assets/logo.jpg" alt="Card image cap">
   <div class="card-body">
-
     <b-button type=button class="btn btn-primary btn-lg btn-block" @click.prevent="getCurrentStanding()" >Check Poll</b-button>
     <br>
     <span v-if="response">
@@ -11,8 +8,6 @@
     <br>
     <vue-instant-loading-spinner id='loader' ref="Spinner"></vue-instant-loading-spinner>
     <apexchart type=donut height=380 :options="chartOptions" :series="series" />
-  
-  </div>
   </div>
 </template>
 
@@ -22,6 +17,7 @@ import VueInstantLoadingSpinner from "vue-instant-loading-spinner/src/components
 
 export default {
   name: "response",
+  props: [ 'backendAddress' ],
   data() {
     return {
       response: null,
@@ -38,8 +34,7 @@ export default {
       this.runSpinner();
 
       // console.log(`this.selected ${this.selected}`);
-      let backendAddress = document.getElementById("backendAddressInput").value;
-      const apiResponse = await PostsService.getCurrentStanding(backendAddress);
+      const apiResponse = await PostsService.getCurrentStanding(this.$parent.backendAddress);
 
       this.chartOptions = {
           series: apiResponse.data.map(x => x.Record.count),
