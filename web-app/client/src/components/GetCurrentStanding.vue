@@ -40,20 +40,11 @@ export default {
       // console.log(`this.selected ${this.selected}`);
       let backendAddress = document.getElementById("backendAddressInput").value;
       const apiResponse = await PostsService.getCurrentStanding(backendAddress);
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%");
-      console.log(apiResponse);
-      console.log(apiResponse.data[0].Record);
-      let currentStanding = [];
-      for (let i = 0; i < apiResponse.data.length; i++) {
-        currentStanding[i] = apiResponse.data[i].Record.count;
-      }
-      console.log("curStanding: ");
-      console.log(currentStanding);
 
       this.chartOptions = {
-          series: currentStanding,
+          series: apiResponse.data.map(x => x.Record.count),
 
-          labels: ["Germany", "Canada", "France", "Brazil", "Netherlands"],
+          labels: apiResponse.data.map(x => x.Record.description),
           title: {text: "Current Poll Result"},
           chartOptions: {
           chart: {
@@ -118,8 +109,6 @@ export default {
         }
       };
           
-      // this.response = apiResponse.data;
-      // this.renderChart(this.datacollection, this.options)
       this.hideSpinner();
     },
     async runSpinner() {
