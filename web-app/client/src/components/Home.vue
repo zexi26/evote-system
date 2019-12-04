@@ -80,6 +80,7 @@ export default {
 
       await this.runSpinner();
       const apiResponse = await PostsService.registerVoter(
+        this.$parent.backendAddress,
         this.registerData.voterId,
         this.registerData.nationId,
         this.registerData.firstName,
@@ -103,6 +104,7 @@ export default {
         await this.hideSpinner();
       } else {
         const apiResponse = await PostsService.validateVoter(
+          this.$parent.backendAddress,
           this.loginData.voterId
         );
         console.log("apiResponse");

@@ -58,7 +58,8 @@ export default {
 
       } else {
         const apiResponse = await PostsService.queryWithQueryString(
-        this.selected
+          this.$parent.backendAddress, 
+          this.selected
       );
       this.response = apiResponse.data;
 

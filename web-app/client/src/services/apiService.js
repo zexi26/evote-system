@@ -1,26 +1,26 @@
 import Api from '@/services/api'
 
 export default {
-  castBallot(electionId, voterId, picked) {
-    return Api("http://localhost:8081").post('castBallot', {
+  castBallot(backend_url, electionId, voterId, picked) {
+    return Api(backend_url).post('castBallot', {
       electionId: electionId,
       voterId: voterId,
       picked: picked
     })
   },
   queryAll() {
-    return Api("http://localhost:8081").get('queryAll')
+    return Api(backend_url).get('queryAll')
   },
   queryByObjectType() {
-    return Api("http://localhost:8081").get('queryByObjectType')
+    return Api(backend_url).get('queryByObjectType')
   },
   queryWithQueryString(selected) {
-    return Api("http://localhost:8081").post('queryWithQueryString', {
+    return Api(backend_url).post('queryWithQueryString', {
       selected: selected
     }) 
   },
-  registerVoter(voterId, nationId, firstName, lastName, email, number) {
-    return Api("http://localhost:8081").post('registerVoter', {
+  registerVoter(backend_url, voterId, nationId, firstName, lastName, email, number) {
+    return Api(backend_url).post('registerVoter', {
       voterId: voterId,
       nationId: nationId,
       firstName: firstName,
@@ -29,13 +29,13 @@ export default {
       number: number
     }) 
   },
-  validateVoter(voterId) {
-    return Api("http://localhost:8081").post('validateVoter', {
+  validateVoter(backend_url, voterId) {
+    return Api(backend_url).post('validateVoter', {
       voterId: voterId
     }) 
   },
-  Checkpick(key) {
-    return Api("http://localhost:8081").post('Checkpick', {
+  Checkpick(backend_url, key) {
+    return Api(backend_url).post('Checkpick', {
       key: key
     }) 
   },

@@ -56,7 +56,7 @@ export default {
     async castBallot() {
       await this.runSpinner();
 
-      const electionRes = await PostsService.queryWithQueryString('election');
+      const electionRes = await PostsService.queryWithQueryString(this.$parent.backendAddress, 'election');
 
       let electionId = electionRes.data[0].Key;
 
@@ -86,6 +86,7 @@ export default {
       } else {
 
         const apiResponse = await PostsService.castBallot(
+          this.$parent.backendAddress,
           electionId,
           this.input.voterId,
           this.picked

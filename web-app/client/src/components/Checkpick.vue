@@ -98,7 +98,7 @@ export default {
         this.hideSpinner();
       } else {
         this.runSpinner();
-        const apiResponse = await PostsService.Checkpick(this.input.key);
+        const apiResponse = await PostsService.Checkpick(this.$parent.backendAddress, this.input.key);
         console.log(apiResponse);
         this.input = apiResponse;
         this.hideSpinner();
