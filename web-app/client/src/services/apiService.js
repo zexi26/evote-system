@@ -8,13 +8,13 @@ export default {
       picked: picked
     })
   },
-  queryAll() {
+  queryAll(backend_url) {
     return Api(backend_url).get('queryAll')
   },
-  queryByObjectType() {
+  queryByObjectType(backend_url) {
     return Api(backend_url).get('queryByObjectType')
   },
-  queryWithQueryString(selected) {
+  queryWithQueryString(backend_url, selected) {
     return Api(backend_url).post('queryWithQueryString', {
       selected: selected
     }) 

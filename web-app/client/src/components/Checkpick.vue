@@ -73,6 +73,7 @@ import VueInstantLoadingSpinner from 'vue-instant-loading-spinner/src/components
 
 export default {
   name: "response",
+  props: [ 'backendAddress' ],
   data() {
     return {
      input: {
