@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       response: null,
+      series: null,
       chartOptions: {}
     };
   },
