@@ -1,7 +1,7 @@
 <template>
   <div>
   <div class="card-body">
-    <form v-on:submit="validateVoter">
+    <form v-on:submit="redirectVoter">
       <label for="inputNation">Enter game username to vote</label>
       <b-form-input type="text" class="form-control" v-model="loginData.voterId" placeholder="Game username"></b-form-input>
       <button type="submit" class="btn btn-primary">Login</button>
@@ -102,44 +102,39 @@ export default {
       this.registerReponse = apiResponse;
       await this.hideSpinner();
     },
-
-    async validateVoter() {
-      await this.runSpinner();
-
-      if (!this.loginData.voterId) {
-        console.log("!thislogin");
-        let response = 'Please enter a game username';
-        this.LoginResponse.data = response;
-        await this.hideSpinner();
-      } else {
-        let apiResponse;
-        try {
-          apiResponse = await PostsService.validateVoter(
-            this.$parent.backendAddress,
-            this.loginData.voterId
-          );
-        } catch (e) {
-          this.loginResponse.data = `Error contacting ${this.$parent.backendAddress}`;
-          this.hideSpinner();
-          console.log(e);
-          return;
-        }
-        console.log("apiResponse");
-        console.log(apiResponse.data);
-
-        if (apiResponse.data.error) {
-          // console.log(apiResponse);
-          console.log(apiResponse.data.error);
-          this.loginReponse = apiResponse.data.error;
-        } else {
-          this.$router.push("castBallot");
-        }
-
-        console.log(apiResponse);
-        this.loginReponse = apiResponse;
-        // this.$router.push('castBallot')
-        await this.hideSpinner();
+    async redirectVoter() {
+      this.runSpinner();
+      if (!validateVoter()) {
+        this.hideSpinner();
+        return;
       }
+      this.hideSpinner();
+      this.$router.push("castBallot");
+    },
+    async validateVoter() {
+      if (!this.loginData.voterId) {
+        this.LoginResponse.data = 'Please enter a game username';
+        return false;
+      }
+
+      let apiResponse;
+      try {
+        apiResponse = await PostsService.validateVoter(
+          this.$parent.backendAddress,
+          this.loginData.voterId
+        );
+      } catch (e) {
+        this.loginResponse.data = `Error contacting ${this.$parent.backendAddress}`;
+        console.log(e);
+        return false;
+      }
+
+      if (apiResponse.data.error) {
+        this.loginReponse = apiResponse.data.error;
+        return false;
+      }
+
+      return true;
     },
     async runSpinner() {
       this.$refs.Spinner.show();
