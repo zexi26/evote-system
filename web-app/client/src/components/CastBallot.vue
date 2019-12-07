@@ -9,17 +9,8 @@
         <b-form-radio v-model="picked" name="some-radios" value="Libertarian">uThermal (Netherlands)</b-form-radio>
       </b-form-group>
 
-      <!-- <div class="mt-3">Selected: <strong>{{ selected }}</strong></div> -->
-    
-    <!-- <span v-if="picked">
-      Picked:
-      <b>{{ picked }}</b>
-    </span> -->
-    
-    <!--span><b>{{ response }}</b></span><br /-->
     <form v-on:submit="castBallot">
       <b-form-input type="text" class="form-control" v-model="input.voterId" placeholder="Enter Game Username"></b-form-input>
-      <!-- <input type="text" v-model="input.voterId" placeholder="Enter VoterId"> -->
       <button type="submit" class="btn btn-primary">Cast vote</button>
       <br>
     </form>
@@ -29,9 +20,6 @@
       <b>{{ response }}</b>
     </span>
     <br>
-    <div>
-    <b-table striped hover :items="items" :fields="fields"></b-table>
-    </div>
     <vue-instant-loading-spinner id="loader" ref="Spinner"></vue-instant-loading-spinner>
   </div>
 </template>
