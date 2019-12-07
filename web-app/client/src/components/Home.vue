@@ -104,7 +104,7 @@ export default {
     },
     async redirectVoter() {
       this.runSpinner();
-      if (!this.validateVoter()) {
+      if (await !this.validateVoter()) {
         this.hideSpinner();
         return;
       }
