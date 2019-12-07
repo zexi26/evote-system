@@ -43,7 +43,7 @@ export default {
         console.log(e);
         return;
       }
-      this.setupChart(apiResponse.data);
+      await this.setupChart(apiResponse.data);
       this.hideSpinner();
     },
     async setupChart(data) {
