@@ -115,8 +115,8 @@ export default {
           this.response= apiResponse.data.error;
           await this.hideSpinner();
         } else if (apiResponse.data.message) {
-          this.response= `Could not find voter with suername ${this.input.voterId}
-            in the state. Make sure you are entering a valid usename`;
+          this.response = `Could not find voter with username ${this.input.voterId}
+            in the state. Make sure you are entering a valid username`;
           await this.hideSpinner();
         } 
         else {
