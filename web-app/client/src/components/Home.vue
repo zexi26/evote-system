@@ -80,15 +80,23 @@ export default {
     async registerVoter() {
 
       await this.runSpinner();
-      const apiResponse = await PostsService.registerVoter(
-        this.$parent.backendAddress,
-        this.registerData.voterId,
-        this.registerData.nationId,
-        this.registerData.firstName,
-        this.registerData.lastName,
-        this.registerData.email,
-        this.registerData.number
-      );
+      let apiResponse;
+      try {
+        apiResponse = await PostsService.registerVoter(
+         this.$parent.backendAddress,
+         this.registerData.voterId,
+         this.registerData.nationId,
+         this.registerData.firstName,
+         this.registerData.lastName,
+         this.registerData.email,
+         this.registerData.number
+        );
+      } catch (e) {
+        this.response = `Error contacting ${this.$parent.backendAddress}`;
+        this.hideSpinner();
+        console.log(e);
+        return;
+      }
 
       console.log(apiResponse);
       this.registerReponse = apiResponse;
@@ -104,10 +112,18 @@ export default {
         this.loginReponse.data = response;
         await this.hideSpinner();
       } else {
-        const apiResponse = await PostsService.validateVoter(
-          this.$parent.backendAddress,
-          this.loginData.voterId
-        );
+        let apiResponse;
+        try {
+          apiResponse = await PostsService.validateVoter(
+            this.$parent.backendAddress,
+            this.loginData.voterId
+          );
+        } catch (e) {
+          this.response = `Error contacting ${this.$parent.backendAddress}`;
+          this.hideSpinner();
+          console.log(e);
+          return;
+        }
         console.log("apiResponse");
         console.log(apiResponse.data);
 

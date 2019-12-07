@@ -58,16 +58,23 @@ export default {
         this.hideSpinner();
 
       } else {
-        const apiResponse = await PostsService.queryWithQueryString(
-          this.$parent.backendAddress, 
-          this.selected
-      );
-      this.response = apiResponse.data;
+        let apiResponse;
+        try {
+          apiResponse = await PostsService.queryWithQueryString(
+            this.$parent.backendAddress,
+            this.selected
+          );
+        } catch (e) {
+          this.response = `Error contacting ${this.$parent.backendAddress}`;
+          this.hideSpinner();
+          console.log(e);
+          return;
+        }
+        this.response = apiResponse.data;
 
-      console.log("query by object type called");
-      this.hideSpinner();
+        console.log("query by object type called");
+        this.hideSpinner();
       }
-      
     },
     async runSpinner() {
       this.$refs.Spinner.show();

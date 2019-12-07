@@ -33,13 +33,24 @@ export default {
       
       this.runSpinner();
 
-      // console.log(`this.selected ${this.selected}`);
-      const apiResponse = await PostsService.getCurrentStanding(this.$parent.backendAddress);
+      let apiResponse;
+      try {
+        apiResponse = await PostsService.getCurrentStanding(this.$parent.backendAddress);
+      } catch (e) {
+        this.response = `Error contacting ${this.$parent.backendAddress}`;
+        this.hideSpinner();
+        console.log(e);
+        return;
+      }
+      this.setupChart(apiResponse.data);
+      this.hideSpinner();
+    },
+    async setupChart(data) {
 
       this.chartOptions = {
-          series: apiResponse.data.map(x => x.Record.count),
+          series: data.map(x => x.Record.count),
 
-          labels: apiResponse.data.map(x => x.Record.description),
+          labels: data.map(x => x.Record.description),
           title: {text: "Current Poll Result"},
           chartOptions: {
           chart: {
@@ -61,7 +72,7 @@ export default {
               opacity: 0.8
             }
           },
-                    plotOptions: {
+          plotOptions: {
             pie: {
               donut: {
                 labels: {
@@ -74,7 +85,7 @@ export default {
               }
             }
           },
-                    fill: {
+          fill: {
             type: 'pattern',
             opacity: 1,
             pattern: {
@@ -90,7 +101,7 @@ export default {
           theme: {
             palette: 'palette2'
           },
-                    responsive: [{
+          responsive: [{
             breakpoint: 480,
             options: {
               chart: {
@@ -103,8 +114,6 @@ export default {
           }]
         }
       };
-          
-      this.hideSpinner();
     },
     async runSpinner() {
       this.$refs.Spinner.show();

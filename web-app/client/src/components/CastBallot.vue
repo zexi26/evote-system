@@ -57,7 +57,15 @@ export default {
     async castBallot() {
       await this.runSpinner();
 
-      const electionRes = await PostsService.queryWithQueryString(this.$parent.backendAddress, 'election');
+      let electionRes;
+      try {
+        electionRes = await PostsService.queryWithQueryString(this.$parent.backendAddress, 'election');
+      } catch (e) {
+        this.response = `Error contacting ${this.$parent.backendAddress}`;
+        this.hideSpinner();
+        console.log(e);
+        return;
+      }
 
       let electionId = electionRes.data[0].Key;
 
@@ -85,13 +93,20 @@ export default {
         await this.hideSpinner();
 
       } else {
-
-        const apiResponse = await PostsService.castBallot(
-          this.$parent.backendAddress,
-          electionId,
-          this.input.voterId,
-          this.picked
-        );
+        let apiResponse;
+        try {
+          apiResponse = await PostsService.castBallot(
+            this.$parent.backendAddress,
+            electionId,
+            this.input.voterId,
+            this.picked
+          );
+        } catch (e) {
+          this.response = `Error contacting ${this.$parent.backendAddress}`;
+          this.hideSpinner();
+          console.log(e);
+          return;
+        }
 
         console.log('apiResponse: &&&&&&&&&&&&&&&&&&&&&&&');
         console.log(apiResponse);
