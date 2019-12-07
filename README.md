@@ -20,6 +20,11 @@ To view the status of the containers, execute
 make status
 ```
 
+To cleanup, execute
+```
+make clean
+```
+
 ### Feature 1 - Register as a voter
 
 To register for a voter, enter all the required information including game user name, nation, first name, last name, email address and hit Register button.

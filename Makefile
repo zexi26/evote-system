@@ -1,15 +1,11 @@
-run: run-server run-client
-
-run-server:
-	$(MAKE) -C web-app/server run
-
-run-client:
-	$(MAKE) -C web-app/client run
+run:
+	docker-compose up --build &
 
 status:
 	docker container list
 
 clean:
 # Stop and remove all containers
+	-@docker-compose down
 	-@docker stop $$(docker ps -aq)
 	-@docker rm $$(docker ps -aq)
