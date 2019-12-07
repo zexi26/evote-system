@@ -15,7 +15,7 @@
 export default {
   data() {
     return {
-      backendAddress: "http://localhost:8081"
+      backendAddress: "http://ec2-18-191-99-13.us-east-2.compute.amazonaws.com:8081"
     };
   }
 };
