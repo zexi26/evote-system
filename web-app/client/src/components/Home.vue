@@ -113,7 +113,7 @@ export default {
     },
     async validateVoter() {
       if (!this.loginData.voterId) {
-        this.LoginResponse.data = 'Please enter a game username';
+        this.loginResponse.data = 'Please enter a game username';
         return false;
       }
 
