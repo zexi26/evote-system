@@ -1,7 +1,7 @@
 <template>
   <div>
   <div class="card-body">
-    <form v-on:submit="redirectVoter">
+    <form v-on:submit.prevent="redirectVoter">
       <label for="inputNation">Enter game username to vote</label>
       <b-form-input type="text" class="form-control" v-model="loginData.voterId" placeholder="Game username"></b-form-input>
       <button type="submit" class="btn btn-primary">Login</button>
@@ -17,7 +17,7 @@
     <li class="list-group-item">New voter register</li>
   </ul>
   <div class="card-body">
-      <form v-on:submit="registerVoter">
+      <form v-on:submit.prevent="registerVoter">
         <div class="form-group">
         <label for="inputId">Game User Name</label>
         <b-form-input type="text" class="form-control" v-model="registerData.voterId" placeholder="Game Username"></b-form-input>
