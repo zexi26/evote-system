@@ -2,11 +2,11 @@
     <div class="card-body">
     
       <b-form-group label="Cast your vote for your favorite player!">
-      <b-form-radio v-model="picked" name="some-radios" value="Republican">HeroMarine (Germany)</b-form-radio>
-      <b-form-radio v-model="picked" name="some-radios" value="Democrat">MaSa (Canada)</b-form-radio>
-      <b-form-radio v-model="picked" name="some-radios" value="Green">Clem (France)</b-form-radio>
-      <b-form-radio v-model="picked" name="some-radios" value="Independent">Kelazhur (Brazil)</b-form-radio>
-      <b-form-radio v-model="picked" name="some-radios" value="Libertarian">uThermal (Netherlands)</b-form-radio>
+        <b-form-radio v-model="picked" name="some-radios" value="Republican">HeroMarine (Germany)</b-form-radio>
+        <b-form-radio v-model="picked" name="some-radios" value="Democrat">MaSa (Canada)</b-form-radio>
+        <b-form-radio v-model="picked" name="some-radios" value="Green">Clem (France)</b-form-radio>
+        <b-form-radio v-model="picked" name="some-radios" value="Independent">Kelazhur (Brazil)</b-form-radio>
+        <b-form-radio v-model="picked" name="some-radios" value="Libertarian">uThermal (Netherlands)</b-form-radio>
       </b-form-group>
 
       <!-- <div class="mt-3">Selected: <strong>{{ selected }}</strong></div> -->
