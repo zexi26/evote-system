@@ -131,7 +131,8 @@ export default {
       }
 
       if (apiResponse.data.error) {
-        this.loginReponse = apiResponse.data.error;
+        this.loginResponse = apiResponse.data.error;
+        console.log(apiResponse.data.error);
         return false;
       }
 
