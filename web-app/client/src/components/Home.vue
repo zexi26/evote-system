@@ -7,8 +7,8 @@
       <button type="submit" class="btn btn-primary">Login</button>
       <br>
       <br>
-      <span v-if="loginReponse">
-        <b>{{ loginReponse.data }}</b>
+      <span v-if="loginResponse">
+        <b>{{ loginResponse.data }}</b>
       </span>
       <br>
     </form>
@@ -68,7 +68,7 @@ export default {
       registerReponse: {
         data: ""
       },
-      loginReponse: {
+      loginResponse: {
         data: ""
       }
     };
@@ -92,7 +92,7 @@ export default {
          this.registerData.number
         );
       } catch (e) {
-        this.response = `Error contacting ${this.$parent.backendAddress}`;
+        this.loginResponse.data = `Error contacting ${this.$parent.backendAddress}`;
         this.hideSpinner();
         console.log(e);
         return;
@@ -109,7 +109,7 @@ export default {
       if (!this.loginData.voterId) {
         console.log("!thislogin");
         let response = 'Please enter a game username';
-        this.loginReponse.data = response;
+        this.LoginResponse.data = response;
         await this.hideSpinner();
       } else {
         let apiResponse;
@@ -119,7 +119,7 @@ export default {
             this.loginData.voterId
           );
         } catch (e) {
-          this.response = `Error contacting ${this.$parent.backendAddress}`;
+          this.loginResponse.data = `Error contacting ${this.$parent.backendAddress}`;
           this.hideSpinner();
           console.log(e);
           return;
